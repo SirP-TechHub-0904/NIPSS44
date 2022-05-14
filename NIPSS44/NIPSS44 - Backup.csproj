@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-NIPSS44-8646066B-F909-4151-9829-579B2866B13D</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+	  <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+	  <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="web.configd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="web.configd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.21" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="ServiceStack" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Pages\AlumniPage\" />
+    <Folder Include="Areas\Admin\Pages\QuestionnerPage\Apage\" />
+    <Folder Include="Areas\Participant\Pages\NewFolder\" />
+    <Folder Include="wwwroot\assets\picture\" />
+  </ItemGroup>
+
+</Project>

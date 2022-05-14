@@ -1,0 +1,64 @@
+﻿@page
+@model NIPSS44.Areas.Admin.Pages.MessagingPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Recipient)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Retries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].NotificationStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].NotificationType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Message) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipient)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Retries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotificationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotificationType)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+
+                <a asp-page="./Delete" asp-route-id="@item.Id" target="_blank">Delete</a>
+                <a asp-page="./Resend" asp-route-id="@item.Id" target="_blank">Resend</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

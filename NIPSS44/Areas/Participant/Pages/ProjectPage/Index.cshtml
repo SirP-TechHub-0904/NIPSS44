@@ -1,0 +1,128 @@
+﻿@page
+@model NIPSS44.Areas.Participant.Pages.ProjectPage.IndexModel
+@{
+}
+<style>
+    .card {
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 3px rgb(237 230 230), 0 1px 2px rgb(237 205 205);
+        background-color: #726a6a;
+    }
+</style>
+<div class="row">
+    <div class="col-xl-12">
+
+        <!-- Traffic sources -->
+        <div class="card" style="margin:5px;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Some of the Legacy Project ideas thrown up today....and more </h3>
+                    <h4>
+                        (I spoke to more people to pick their brains
+                    </h4>
+
+                    <h6>Your Voting with <i><strong><u>@Model.Email</u></strong></i>.... Kindly Sign Out</h6>
+                </div>
+            </div>
+            <div class="card" style="margin:5px;">
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="Email" hidden="hidden" />
+
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P1">
+                                <span class="custom-control-label">@Model.LegacyProject.P1</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P2">
+                                <span class="custom-control-label">@Model.LegacyProject.P2</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P3">
+                                <span class="custom-control-label">@Model.LegacyProject.P3</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P4">
+                                <span class="custom-control-label">@Model.LegacyProject.P4</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P5">
+                                <span class="custom-control-label">@Model.LegacyProject.P5</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P6">
+                                <span class="custom-control-label">@Model.LegacyProject.P6</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P7">
+                                <span class="custom-control-label">@Model.LegacyProject.P7</span>
+                            </label>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P8">
+                                <span class="custom-control-label">@Model.LegacyProject.P8</span>
+                            </label>
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P9">
+                                <span class="custom-control-label">@Model.LegacyProject.P9</span>
+                            </label>
+
+                        </div>
+                        <div class="form-group">
+
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" required="required" class="custom-control-input" asp-for="LegacyProjectAnswer.Answer" value="P10">
+                                <span class="custom-control-label">@Model.LegacyProject.P10</span>
+                            </label>
+
+                        </div>
+
+                        <div class="">
+                            <input type="submit" class="btn btn-primary" value="Vote Now"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,272 @@
+﻿@page
+@model NIPSS44.Areas.Participant.Pages.Dashboard.IndexModel
+@{
+
+}
+
+@if (TempData["alert"] != null)
+{
+    <div class="alert alert-success alert-styled-left alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+        <span class="font-weight-semibold">Info:</span> @TempData["alert"]
+    </div>
+}
+<style>
+    .table > :not(caption) > * > * {
+        padding: 0rem 0.5rem;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    @@media (max-width: 768px) {
+        .container-fluid {
+            padding-left: 100px !important;
+            padding-right: 100px !important;
+        }
+    }
+
+    .container-fluid {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+</style>
+<style>
+    .table .table {
+        background-color: none !important;
+    }
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 0px 8px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="box">
+            <div class="box-header">
+                <h2 class="box-title" style="text-align:center;font-weight:900;text-transform:uppercase;">
+                   MY DASHBOARD
+                </h2>
+            </div>
+            <div class="box-body">
+
+                <div class="row">
+
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-black">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.TotalParticipant</h3>
+                                </a>
+
+                                <p>Participant</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipantList" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.Male</h3>
+                                </a>
+
+                                <p>MALE</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipantList" asp-route-gender="male" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.Female</h3>
+                                </a>
+
+                                <p>FEMALE</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipantList" asp-route-gender="female" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.ProjectAssigned_Submitted / @Model.ProjectAssigned</h3>
+                                </a>
+
+                                <p>INDIVIDUAL RESEARCH PROJECTS(UPLOADED/TOTAL)</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipantMList" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.LecturesDocuments</h3>
+                                </a>
+
+                                <p>LECTURE NOTES</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipMantList" asp-route-gender="male" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.RESOURCEMATERIALS</h3>
+                                </a>
+
+                                <p>RESOURCE MATERIALS ON LOCAL GOVERNMENT</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipaLntList" asp-route-gender="female" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-black">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.GroupResearch</h3>
+                                </a>
+
+                                <p>GROUP RESEARCH POLICY PAPERS</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipantMList" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.INDIVIDUALESSAYS_Submitted/@Model.INDIVIDUALESSAYS</h3>
+                                </a>
+
+                                <p>INDIVIDUAL ESSAYS (UPLOADED/TOTAL)</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipMantList" asp-route-gender="male" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <a asp-page="">
+                                    <h3>@Model.OTHERRESOURCEMATERIALS</h3>
+                                </a>
+
+                                <p>OTHER RESOURCE MATERIALS</p>
+                            </div>
+
+                            <a asp-page="/Dashboard/ParticipaLntList" asp-route-gender="female" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="card-title">TIMETABE FOR THE WEEK</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="sec-title" style="border: 2px solid #ffffff; box-shadow: 1px 1.6px 3.6px rgb(30 64 44), 2px 0px 2.9px rgb(65 112 86); padding: 16px; background-color: white;">
+                            <div class="">
+                                <h4 style="margin-bottom:20px;">
+                                    <span style="font-weight:800;"> @Model.Title</span>
+                                    <a asp-page="/Dashboard/Index" asp-area="Participant" asp-route-date="@Model.NextWeek" class="btn btn-success float-right" style="float:right;color:white;">@Model.NextWeekTitle</a>
+
+                                    <a asp-page="/Dashboard/Index" asp-area="Participant" asp-route-date="@Model.PreviousWeek" class="btn btn-success float-right" style="float:right;color:white;margin-right:9px;">@Model.PreviousWeekTitle</a>
+                                </h4>
+
+                               
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" style="width:100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 16.9%; word-break: break-word;">DAY/DATE</th>
+                                                            <th style="width:12.1%;">TIME</th>
+                                                            <th style="width: 32.2%; word-break: break-word;">LECTURE/ACTIVITY</th>
+                                                            <th style="width: 20%; word-break: break-word;">MODERATOR</th>
+                                                            <th style="width: 20%; word-break: break-word;">LECTURER</th>
+                                                        </tr>
+                                                    </thead>
+
+
+                                                    <tbody>
+                                                        @foreach (var x in Model.Events)
+                                                        {
+                                                            <tr>
+
+                                                                <td colspan="5" style="width:100%;">
+                                                                    <table class="table" style="width:100%;">
+                                                                        @await Component.InvokeAsync("TimeTable", new { date = x })
+                                                                    </table>
+                                                                </td>
+
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            @if (Model.Desc != null)
+                                            {
+                                                <h4 style="padding-left:8px;">NOTE:</h4>
+                                                <div class="text-justify" style="text-align: justify !important; padding-left: 8px;">
+                                                    @Html.Raw(Model.Desc)
+                                                </div>
+                                            }
+                                        </div>
+                                    
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

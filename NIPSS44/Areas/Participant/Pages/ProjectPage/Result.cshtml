@@ -1,0 +1,109 @@
+﻿@page
+@model NIPSS44.Areas.Participant.Pages.ProjectPage.ResultModel
+@{
+}
+
+
+<style>
+    .card {
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 3px rgb(237 230 230), 0 1px 2px rgb(237 205 205);
+        background-color: #726a6a;
+    }
+</style>
+<div class="row">
+    <div class="col-xl-12">
+
+        <!-- Traffic sources -->
+        <div class="card" style="margin:5px;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">LEGACY PROJECT VOTING RESULT </h3>
+
+
+                    <h6>Summary of Voters (@Model.LegacyProjectAnswers.Count())</h6>
+
+                    @if(TempData["alert"] != null){
+                <div class="alert alert-danger">
+                    <strong>Note!</strong> @TempData["alert"]
+                </div>
+                    }
+                </div>
+
+                <div class=" table-responsive">
+                    <table class="table table-bordered" style="margin:10px;">
+                        <tr>
+                            <th style="width:5%">S/N</th>
+                            <th style="width:80%">Project</th>
+                            <th style="width:15%">Number of Vote</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>@Model.LegacyProject.P1</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>@Model.LegacyProject.P2</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P2</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>@Model.LegacyProject.P3</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P3</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>@Model.LegacyProject.P4</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P4</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>@Model.LegacyProject.P5</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P5</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>@Model.LegacyProject.P6</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P6</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>@Model.LegacyProject.P7</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P7</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>@Model.LegacyProject.P8</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P8</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>@Model.LegacyProject.P9</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P9</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>@Model.LegacyProject.P10</td>
+                            <td style="font-size:30px;text-align:center;">@Model.P10</td>
+                        </tr>
+                    </table>
+
+
+                </div>
+                <div style="padding:5px 10px;">
+                    <h4>Total Number in Class(90)</h4>
+                    <h4>Total Votes (@Model.LegacyProjectAnswers.Count())</h4>
+                    @{
+                    var xi = 90 - Model.LegacyProjectAnswers.Count();
+                    }
+                    <h4>Yet to Votes (@xi)</h4>
+
+                    <a class="pull-right btn btn-primary" asp-page="/Index" asp-area="">
+                        View Graph
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
