@@ -72,7 +72,6 @@ namespace NIPSS44.Background
                     notificationModel.IsAndroiodDevice = true;
                     notificationModel.DeviceId = nm.UserToNotify.TokenId;
                     await _notificationService.SendNotification(notificationModel);
-
                     var xiod = await _context.Notifications.AsNoTracking().FirstOrDefaultAsync(x => x.Id == nm.Id);
                     string ixd = xiod.Id.ToString();
 

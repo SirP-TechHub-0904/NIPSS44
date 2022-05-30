@@ -28,14 +28,14 @@ namespace NIPSS44.Pages
             _userManager = userManager;
         }
         public IList<Executive> Executive { get; set; }
-        public IList<Profile> NipssStaff { get; set; }
+        public IList<Profile> NipssStaffList { get; set; }
         public IList<News> News { get; set; }
         public IList<CurrentAffair> CurrentAffair { get; set; }
 
         public async Task OnGetAsync()
         {
             Executive = await _context.Executive.Include(x=>x.Profile).Include(x => x.Alumni).OrderBy(x => x.SortOrder).Where(x=>x.Alumni.Active == true).Take(3).ToListAsync();
-            NipssStaff = await _context.Profiles.Include(x => x.User).Where(x => x.AccountRole == "ManagingStaff").OrderBy(x => x.SortOrder).Take(3).ToListAsync();
+            NipssStaffList = await _context.Profiles.Include(x => x.User).Where(x => x.AccountRole == "ManagingStaff").OrderBy(x => x.SortOrder).Take(3).ToListAsync();
             News = await _context.News.Include(x=>x.Comments).OrderBy(x => x.Date).Take(3).ToListAsync();
             CurrentAffair = await _context.CurrentAffairs.OrderBy(x => x.Date).Take(8).ToListAsync();
 
