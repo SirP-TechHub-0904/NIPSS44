@@ -64,11 +64,11 @@
                         <a asp-page="/Dashboard/Voting" class="btn btn-danger pull-right">Go Back</a>
                     </div>
                     <div class="box-header">
-                        <h1>THE NATIONAL INSTITUTE</h1>
-                        <h2 class="box-title">EVENT CONTRIBUTION VOTING RESULT </h2>
+                        <h1 style="text-align:center;">THE NATIONAL INSTITUTE</h1>
+                        <h2 class="box-title" style="text-align:center;">EVENT CONTRIBUTION VOTING RESULT </h2>
 
 
-                        <h3>Summary of Voters (@Model.LegacyProjectAnswers.Count()) (Statistic and Graph)</h3>
+                    @*    <h3>Summary of Voters (@Model.LegacyProjectAnswers.Count()) (Statistic and Graph)</h3>*@
 
                         @if (TempData["alert"] != null)
                         {
