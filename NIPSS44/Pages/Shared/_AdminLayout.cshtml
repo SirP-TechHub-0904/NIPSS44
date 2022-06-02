@@ -257,7 +257,18 @@
                         </ul>
                     </li>
                     <li><a asp-page="/GalleryPage/Index" asp-area="Admin"><i class="fa fa-camera"></i> <span>Gallery</span></a></li>
-
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i> <span>Voting</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a asp-page="/ProfileAccount/Index" asp-area="Admin"><i class="fa fa-circle-o"></i> Users</a></li>
+                            <li><a asp-page="/ProfileAccount/SendMail" asp-area="Admin"><i class="fa fa-circle-o"></i> Send Email Setup</a></li>
+                        </ul>
+                    </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-users"></i> <span>User Accounts</span>

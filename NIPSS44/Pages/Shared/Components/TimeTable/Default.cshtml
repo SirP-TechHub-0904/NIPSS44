@@ -2,12 +2,12 @@
 
 
 
-    <tr>
-        <td rowspan="@Model.Count()" style="width: 15%; word-break: break-word;vertical-align:middle;">@ViewBag.datete</td>
-        <td style="width:85%;">
-            <table class="table table-bordered" style="width:100%;">
-                @foreach(var i in Model)
-{
+<tr>
+    <td rowspan="@Model.Count()" style="width: 15%; word-break: break-word;vertical-align:middle;">@ViewBag.datete</td>
+    <td style="width:85%;">
+        <table class="table table-bordered" style="width:100%;">
+            @foreach (var i in Model)
+            {
                 <tr>
                     @if (i.ContentType == Data.Model.ContentType.IsSingle)
                     {
@@ -25,6 +25,12 @@
                                 <span>@Html.Raw(i.Content)</span>
                             }
 
+                            @if (i.IsLecture == true)
+                            {
+                                <span>
+                                    @await Component.InvokeAsync("TimeTableEvenDoc", new { id = i.Id })
+                                </span>
+                            }
                         </td>
                     }
                     else
@@ -47,11 +53,11 @@
 
                         </td>
                         <td style="width: 23%; word-break: break-word;">@i.Moderator</td>
-                        <td style="width: 22%; word-break: break-word;">@i.Moderator</td>
+                        <td style="width: 22%; word-break: break-word;">@i.Lecturer</td>
                     }
                 </tr>
             }
-            </table>
-        </td>
-    </tr>
+        </table>
+    </td>
+</tr>
 

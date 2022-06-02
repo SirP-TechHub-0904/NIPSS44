@@ -20,5 +20,6 @@ namespace NIPSS44.Data.Model
         public ContentStatus ContentStatus { get; set; }
         public ContentType ContentType { get;set;}
         public string Note { get; set; }
+        public bool IsLecture { get; set; }
     }
 }

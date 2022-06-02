@@ -6,16 +6,27 @@ using System.Web;
 
 namespace NIPSS44.Data.Model
 {
+    public enum VotingType
+    {
+        [Description("NONE")]
+        NONE = 0,
+        [Description("Project")]
+        Project = 2,
+        [Description("Contribution")]
+        Contribution = 3,
+        [Description("Dues")]
+        Dues = 4,
+    }
     public enum EventType
     {
-       
+
         [Description("NONE")]
         NONE = 0,
         [Description("Timetable")]
         Timetable = 2,
         [Description("Event")]
         Event = 3,
-       
+
     }
     public enum OptionType
     {
@@ -39,7 +50,7 @@ namespace NIPSS44.Data.Model
         IMG = 0,
         [Description("VIDEO")]
         VIDEO = 2,
-       
+
     }
     public enum DocType
     {
@@ -84,7 +95,7 @@ namespace NIPSS44.Data.Model
         NONE = 0,
         [Description("IsSingle")]
         IsSingle = 2,
-       
+
     }
 
     public enum NotificationStatus

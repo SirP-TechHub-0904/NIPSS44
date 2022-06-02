@@ -15,7 +15,7 @@ namespace NIPSS44.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.24")
+                .HasAnnotation("ProductVersion", "3.1.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -561,6 +561,9 @@ namespace NIPSS44.Data.Migrations
                     b.Property<int>("EventType")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsLecture")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Lecturer")
                         .HasColumnType("nvarchar(max)");
 
@@ -646,6 +649,30 @@ namespace NIPSS44.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("C1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("C2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("C3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("C4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("D1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("D2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("D3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("D4")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("P1")
                         .HasColumnType("nvarchar(max)");
 
@@ -676,6 +703,9 @@ namespace NIPSS44.Data.Migrations
                     b.Property<string>("P9")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("VotingType")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("LegacyProjects");
@@ -693,6 +723,9 @@ namespace NIPSS44.Data.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VotingType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -936,6 +969,9 @@ namespace NIPSS44.Data.Migrations
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsParticipant")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LGA")
                         .HasColumnType("nvarchar(max)");

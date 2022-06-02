@@ -29,7 +29,11 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
         public async Task OnGetAsync()
         {
 
-            IQueryable<Profile> profilex = from s in _context.Profiles.Include(x=>x.User).Where(x => x.User.Email != "jinmcever@gmail.com").OrderByDescending(x => x.FullName)
+            IQueryable<Profile> profilex = from s in _context.Profiles
+                                           .Include(x=>x.User)
+                                           .Include(x=>x.StudyGroupMemeber)
+                                           .ThenInclude(x=>x.StudyGroup)
+                                           .Where(x => x.User.Email != "jinmcever@gmail.com").OrderByDescending(x => x.FullName)
                                      select s;
             Profile = await profilex.ToListAsync();
            //var xProfile = await profilex.Where(x=>x.AccountRole == "Participant").ToListAsync();

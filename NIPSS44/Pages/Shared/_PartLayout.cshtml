@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SEC 44 - THE NATIONAL INSTITUTE</title>
     <!-- Tell the browser to be responsive to screen width -->
+    @if (ViewData["disablex"] != "disable")
+    {
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    }
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="~/dashboard/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -20,13 +23,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="~/dashboard/dist/css/skins/_all-skins.min.css">
     <link rel="shortcut icon" href="~/img/download.png">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Google Font -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet"
@@ -82,6 +79,15 @@
 
         gtag('config', 'G-X0CM3VESSW');
     </script>
+
+    <meta property="og:site_name" content="NIPSS SEC44 PORTAL">
+    <meta property="og:title" content="@ViewData["Title"]" />
+    <meta property="og:description" content="@ViewData["Description"]" />
+    <meta property="og:image" itemprop="image" content="@ViewData["Image"]">
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content="@DateTime.UtcNow.AddHours(1)" />
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -230,12 +236,13 @@
 
                     <li><a asp-page="/Dashboard/Index" asp-area="Participant"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                     <li><a asp-page="/Dashboard/Profile" asp-area="Participant"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+                    <li><a asp-page="/Dashboard/Voting" asp-area="Participant"><i class="fa fa-thumbs-up"></i> <span>Voting</span></a></li>
                     <li><a asp-page="/Dashboard/Planner" asp-area="Participant"><i class="fa fa-globe"></i> <span>Dialy Planner</span></a></li>
                     <li><a asp-page="/Dashboard/Diary" asp-area="Participant"><i class="fa fa-envelope"></i> <span>Diary</span></a></li>
                     <li><a asp-page="/Dashboard/Init" asp-area="Participant"><i class="fa fa-bookmark"></i> <span>Rapid Test</span></a></li>
-                   
-                        <li><a asp-page="/Dashboard/ParticipantList" asp-area="Participant"><i class="fa fa-bookmark"></i> <span>Participants</span></a></li>
-                    
+
+                    <li><a asp-page="/Dashboard/ParticipantList" asp-area="Participant"><i class="fa fa-bookmark"></i> <span>Participants</span></a></li>
+
                     <li><a asp-page="/TourPage/Index" asp-area="Participant"><i class="fa fa-globe"></i> <span>Tour</span></a></li>
                     <li><a asp-page="/Dashboard/Library" asp-area="Participant"><i class="fa fa-book"></i> <span>Library</span></a></li>
                     <li><a asp-page="/Dashboard/Sectv" asp-area="Participant"><i class="fa fa-camera"></i> <span>SEC44 TV</span></a></li>

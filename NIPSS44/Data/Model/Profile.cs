@@ -42,6 +42,7 @@ namespace NIPSS44.Data.Model
         public bool DontShow { get; set; }
         public string AboutProfile { get; set; }
         public bool Sent { get; set; }
+        public bool IsParticipant { get; set; }
         public string Roles { get; set; }
 
         public virtual StudyGroupMemeber StudyGroupMemeber { get; set; }

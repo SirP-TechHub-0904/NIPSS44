@@ -35,7 +35,7 @@ namespace NIPSS44.Areas.Participant.Pages.ProjectPage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            var check = await _context.Users.Select(x=>x.Email).ToListAsync();
+            var check = await _context.LegacyProjectAnswers.Where(x=>x.VotingType == VotingType.Project).Select(x=>x.Email).ToListAsync();
             if (check.Contains(user.Email))
             {
                 TempData["alert"] = "You have Voted Already";
@@ -53,7 +53,7 @@ namespace NIPSS44.Areas.Participant.Pages.ProjectPage
 
         public async Task<IActionResult> OnPostAsync()
         {
-
+            LegacyProjectAnswer.VotingType = VotingType.Project;
             LegacyProjectAnswer.Email = Email;
             _context.LegacyProjectAnswers.Add(LegacyProjectAnswer);
             await _context.SaveChangesAsync();

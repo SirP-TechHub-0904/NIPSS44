@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,14 +18,23 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
     public class EditModel : PageModel
     {
         private readonly NIPSS44.Data.NIPSSDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public EditModel(NIPSS44.Data.NIPSSDbContext context)
+        public EditModel(NIPSS44.Data.NIPSSDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
         public Profile Profile { get; set; }
+
+        [BindProperty]
+        public string Email { get; set; }
+
+        [BindProperty]
+        public long StudyGroupId { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -34,15 +44,19 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
             }
 
             Profile = await _context.Profiles
-                .Include(p => p.User).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(p => p.User)
+                .Include(x => x.StudyGroupMemeber)
+                                           .ThenInclude(x => x.StudyGroup)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Profile == null)
             {
                 return NotFound();
             }
             ViewData["AlumniId"] = new SelectList(_context.Alumnis, "Id", "Title");
+            ViewData["StudyGroupId"] = new SelectList(_context.StudyGroups, "Id", "Title");
 
-            ViewData["UserId"] = new SelectList(_context.Users.OrderByDescending(x=>x.Email), "Id", "Email");
+            ViewData["UserId"] = new SelectList(_context.Users.OrderByDescending(x => x.Email), "Id", "Email");
             return Page();
         }
 
@@ -73,7 +87,47 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
                 }
             }
 
-            return RedirectToPage("./Index");
+
+            try
+            {
+                if (!String.IsNullOrEmpty(Email))
+                {
+                    var user = await _userManager.FindByIdAsync(Profile.UserId);
+                    var xuser = await _userManager.GenerateChangeEmailTokenAsync(user, Email);
+                    var chemail = await _userManager.ChangeEmailAsync(user, Email, xuser);
+                    if (chemail.Succeeded)
+                    {
+                        TempData["er"] = "Email Changed";
+
+                    }
+                    else
+                    {
+                        return Page();
+                    }
+                }
+            }
+            catch (Exception c)
+            {
+
+            }
+
+            try
+            {
+                if (StudyGroupId > 0)
+                {
+                    var m = await _context.StudyGroupMemebers.FirstOrDefaultAsync(x => x.ProfileId == Profile.Id);
+                    m.StudyGroupId = StudyGroupId;
+                    _context.Attach(Profile).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                    TempData["errr"] = "Group Changed";
+                }
+            }
+            catch (Exception d)
+            {
+
+            }
+            TempData["err"] = "Account Updated";
+            return RedirectToPage("./Result");
         }
 
         private bool ProfileExists(long id)
