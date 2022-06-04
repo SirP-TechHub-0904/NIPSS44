@@ -1,16 +1,20 @@
-﻿using System;
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using NIPSS44.Data;
 using NIPSS44.Data.Model;
 
-namespace NIPSS44.Pages.Web
+namespace NIPSS44.Areas.Participant.Pages.Dashboard
 {
+    [Authorize]
     public class TimeTableModel : PageModel
     {
         private readonly NIPSS44.Data.NIPSSDbContext _context;
@@ -29,7 +33,7 @@ namespace NIPSS44.Pages.Web
         public string NextWeekTitle { get; set; }
         public string Title { get; set; }
 
-        public async Task OnGetAsync(string date = null, string searchdate = null, string searchdatecancel = null)
+        public async Task OnGetAsync(string date = null, string searchdate = null, string searchdatecancel = null, string id = null, string x = null)
         {
             //name="searchdatecancel" value="cancel"
             IQueryable<Event> evct = from s in _context.Events.OrderByDescending(x => x.Date)
@@ -40,6 +44,24 @@ namespace NIPSS44.Pages.Web
                 searchdate = null;
             }
             DateTime givenDate = DateTime.Today;
+
+            if (id != null)
+            {
+                string ddate = id.Insert(2, "/");
+                string ddatex = ddate.Insert(6, "/");
+                if (ddatex.Contains("single"))
+                {
+                    ddatex = ddatex.Replace("single", "");
+                    date = null;
+                    searchdate = ddatex;
+                }
+                else
+                {
+                    //week
+                    date = ddatex;
+                    searchdate = null;
+                }
+            }
             if (date != null)
             {
 
@@ -55,10 +77,8 @@ namespace NIPSS44.Pages.Web
             DateTime endOfWeek = startOfWeek.AddDays(5);
 
             TempData["sharedate"] = givenDate.Date.ToString("dd MMMM yyyy");
-
             var dx = givenDate.ToString("ddMMMyyyy");
             string xdx = dx;
-           
 
             if (searchdate != null)
             {
@@ -79,9 +99,8 @@ namespace NIPSS44.Pages.Web
                 }
                 var sf = query.Contains("yyyy-MM-dd");
                 Events = query;
-               
-                    xdx = xdx + "single";
-                
+                xdx = xdx + "single";
+
             }
             else
             {
@@ -100,13 +119,11 @@ namespace NIPSS44.Pages.Web
                 }
                 Events = query;
             }
-          
-
             var callbackUrl = Url.Page(
-                            "/Dashboard/TM",
-                            pageHandler: null,
-                            values: new { area = "Participant", id = xdx },
-                            protocol: Request.Scheme);
+                         "/Dashboard/TM",
+                         pageHandler: null,
+                         values: new { area = "Participant", id = xdx },
+                         protocol: Request.Scheme);
 
             string mi = $"{HtmlEncoder.Default.Encode(callbackUrl)}";
             TempData["link"] = mi;

@@ -127,7 +127,7 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
 
                 mail.Body = message;
                 //set the addresses 
-                mail.From = new MailAddress("noreply@sec44nipss.com", "SEC44 NIPSS"); //IMPORTANT: This must be same as your smtp authentication address.
+                mail.From = new MailAddress("no-reply@sec44nipss.com", "SEC44 NIPSS"); //IMPORTANT: This must be same as your smtp authentication address.
                 mail.To.Add(recipient);
 
                 //set the content 
@@ -138,7 +138,7 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
                 SmtpClient smtp = new SmtpClient("mail.sec44nipss.com");
 
                 //IMPORANT:  Your smtp login email MUST be same as your FROM address. 
-                NetworkCredential Credentials = new NetworkCredential("noreply@sec44nipss.com", "Admin@123");
+                NetworkCredential Credentials = new NetworkCredential("no-reply@sec44nipss.com", "Admin@123");
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = Credentials;
                 smtp.Port = 25;    //alternative port number is 8889
@@ -148,7 +148,7 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
             }
             catch (Exception ex)
             {
-
+                TempData["lo"] = ex.ToString();
                 return false;
             }
         }

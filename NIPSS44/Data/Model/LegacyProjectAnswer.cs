@@ -10,6 +10,7 @@ namespace NIPSS44.Data.Model
         public long Id { get; set; }
         public string Email { get; set; }
         public string Answer { get; set; }
+        public string Message { get; set; }
 
         public VotingType VotingType { get; set; }
     }
