@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using NIPSS44.Data.Model;
 
 namespace NIPSS44.Areas.Participant.Pages.Dashboard
 {
+    [Authorize]
     public class ParticipantListModel : PageModel
     {
         private readonly NIPSS44.Data.NIPSSDbContext _context;
@@ -25,7 +27,7 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
         {
             Profile = await _context.Profiles
                 .Include(p => p.Alumni)
-                .Include(p => p.User).Where(x => x.AccountRole == "Participant").ToListAsync();
+                .Include(p => p.User).Where(x => x.IsParticipant == true).ToListAsync();
             if(gender != null)
             {
                 Gender = gender;

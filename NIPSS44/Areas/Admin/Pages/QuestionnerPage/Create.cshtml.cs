@@ -35,18 +35,16 @@ namespace NIPSS44.Areas.Admin.Pages.QuestionnerPage
             {
                 return Page();
             }
-
             Questionner.ShortLink = CreateD();
+
             string code = Guid.NewGuid().ToString();
             string code1 = Guid.NewGuid().ToString();
             string code2 = Guid.NewGuid().ToString();
             Questionner.LongLink = code + CreateD() + code1 + code2;
-
-
             _context.Questionners.Add(Questionner);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./FormMaker", new { o = Questionner.ShortLink, q = Questionner.LongLink });
         }
 
         private static string CreateA(int length = 3)
@@ -98,7 +96,7 @@ namespace NIPSS44.Areas.Admin.Pages.QuestionnerPage
         private static string CreateD(int length = 8)
         {
             // Create a string of characters, numbers, special characters that allowed in the password  
-            string validChars = CreateA() + CreateB() +CreateC();
+            string validChars = CreateA() + CreateB() + CreateC();
             Random random = new Random();
 
             // Select one random character at a time from the string  

@@ -36,19 +36,36 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
                                            .Where(x => x.User.Email != "jinmcever@gmail.com").OrderByDescending(x => x.FullName)
                                      select s;
             Profile = await profilex.ToListAsync();
-           //var xProfile = await profilex.Where(x=>x.AccountRole == "Participant").ToListAsync();
-           // //var docv = await _context.Documents.Where(x => x.CoverImage == "~/91List-Doc.jpeg").ToListAsync();
-           // foreach (var x in xProfile)
-           // {
-           //     x.Sent = false;
+            //var xProfile = await profilex.ToListAsync();
 
-           //     _context.Attach(x).State = EntityState.Modified;
+            //int xd = 1;
+            //foreach (var x in xProfile)
+            //{
+            //    xd++;
+            //    x.DateRegistered = DateTime.UtcNow.AddHours(1).AddDays(-50);
+            //    x.DateRegistered = x.DateRegistered.AddDays(xd);
+            //   var dx = x.DateRegistered.ToString("ddMMMdddmmtt");
+            //                    Random num = new Random();
 
-           // }
-           // await _context.SaveChangesAsync();
+            //    // Create new string from the reordered char array
+            //    string rand = new string(dx.ToCharArray().
+            //                    OrderBy(s => (num.Next(2) % 2) == 0).ToArray());
+
+            //    var chx = rand;
+
+            //    x.ProfileHandler = chx;
+               
+            //    _context.Attach(x).State = EntityState.Modified;
+
+            //}
+            //await _context.SaveChangesAsync();
 
             Participant = await profilex.Where(x => x.AccountRole == "Participant").CountAsync();
             Staff = await profilex.Where(x => x.AccountRole == "Staff").CountAsync();
         }
+       
+
+
     }
+
 }

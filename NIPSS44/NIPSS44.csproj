@@ -9,11 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="web.configf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="web.configf" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\.bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -1186,7 +1181,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Pages\QuestionnerPage\Apage\" />
-    <Folder Include="Areas\Participant\Pages\NewFolder\" />
     <Folder Include="wwwroot\assets\picture\" />
   </ItemGroup>
 
@@ -2676,6 +2670,9 @@
     </Compile>
     <Compile Update="Areas\NIPSS\Pages\Admin\NIPSSExecutive - Copy.cshtml.cs">
       <DependentUpon>NIPSSExecutive.cshtml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Participant\Pages\Dashboard\MyGallery - Copy.cshtml.cs">
+      <DependentUpon>MyGallery.cshtml.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -634,10 +634,24 @@ namespace NIPSS44.Data.Migrations
                     b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Private")
+                        .HasColumnType("bit");
+
+                    b.Property<long?>("ProfileId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Tag")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("UseAsActivity")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
 
                     b.ToTable("Galleries");
                 });
@@ -1000,6 +1014,9 @@ namespace NIPSS44.Data.Migrations
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProfileHandler")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfilePhoto")
                         .HasColumnType("nvarchar(max)");
 
@@ -1118,6 +1135,12 @@ namespace NIPSS44.Data.Migrations
                     b.Property<string>("LongLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PreviewImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("ProfileId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Response")
                         .HasColumnType("nvarchar(max)");
 
@@ -1128,6 +1151,8 @@ namespace NIPSS44.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
 
                     b.ToTable("Questionners");
                 });
@@ -1658,6 +1683,13 @@ namespace NIPSS44.Data.Migrations
                         .HasForeignKey("ProfileId");
                 });
 
+            modelBuilder.Entity("NIPSS44.Data.Model.Gallery", b =>
+                {
+                    b.HasOne("NIPSS44.Data.Model.Profile", "Profile")
+                        .WithMany("MyGallery")
+                        .HasForeignKey("ProfileId");
+                });
+
             modelBuilder.Entity("NIPSS44.Data.Model.LocalGoverment", b =>
                 {
                     b.HasOne("NIPSS44.Data.Model.State", "States")
@@ -1725,6 +1757,13 @@ namespace NIPSS44.Data.Migrations
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NIPSS44.Data.Model.Questionner", b =>
+                {
+                    b.HasOne("NIPSS44.Data.Model.Profile", "Profile")
+                        .WithMany()
+                        .HasForeignKey("ProfileId");
                 });
 
             modelBuilder.Entity("NIPSS44.Data.Model.RapidOption", b =>

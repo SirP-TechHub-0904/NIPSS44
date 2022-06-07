@@ -14,15 +14,13 @@ namespace NIPSS44.Pages
 {
     public class IndexModel : PageModel 
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly NIPSS44.Data.NIPSSDbContext _context;
         private readonly INotificationService _notificationService;
         private readonly UserManager<IdentityUser> _userManager;
 
 
-        public IndexModel(ILogger<IndexModel> logger, Data.NIPSSDbContext context, INotificationService notificationService, UserManager<IdentityUser> userManager)
+        public IndexModel(Data.NIPSSDbContext context, INotificationService notificationService, UserManager<IdentityUser> userManager)
         {
-            _logger = logger;
             _context = context;
             _notificationService = notificationService;
             _userManager = userManager;
@@ -32,45 +30,13 @@ namespace NIPSS44.Pages
         public IList<News> News { get; set; }
         public IList<CurrentAffair> CurrentAffair { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             Executive = await _context.Executive.Include(x=>x.Profile).Include(x => x.Alumni).OrderBy(x => x.SortOrder).Where(x=>x.Alumni.Active == true).Take(3).ToListAsync();
             NipssStaffList = await _context.Profiles.Include(x => x.User).Where(x => x.AccountRole == "ManagingStaff").OrderBy(x => x.SortOrder).Take(3).ToListAsync();
             News = await _context.News.Include(x=>x.Comments).OrderBy(x => x.Date).Take(3).ToListAsync();
-            CurrentAffair = await _context.CurrentAffairs.OrderBy(x => x.Date).Take(8).ToListAsync();
 
-            var LegacyProjectAnswers = await _context.LegacyProjectAnswers.ToListAsync();
-            decimal p1 = LegacyProjectAnswers.Where(x => x.Answer == "P1").Count();
-            decimal p2 = LegacyProjectAnswers.Where(x => x.Answer == "P2").Count();
-            decimal p3 = LegacyProjectAnswers.Where(x => x.Answer == "P3").Count();
-            decimal p4 = LegacyProjectAnswers.Where(x => x.Answer == "P4").Count();
-            decimal p5 = LegacyProjectAnswers.Where(x => x.Answer == "P5").Count();
-            decimal p6 = LegacyProjectAnswers.Where(x => x.Answer == "P6").Count();
-            decimal p7 = LegacyProjectAnswers.Where(x => x.Answer == "P7").Count();
-            decimal p8 = LegacyProjectAnswers.Where(x => x.Answer == "P8").Count();
-            decimal p9 = LegacyProjectAnswers.Where(x => x.Answer == "P9").Count();
-            decimal p10 = LegacyProjectAnswers.Where(x => x.Answer == "P10").Count();
-
-
-            //decimal ikf = (lpp / 90);
-            //decimal jfh = (ikf *100);
-            //int os = (p1 / 90);
-            //int osj = (p1 / Convert.ToInt32(90));
-            //int osjj = (p1 / Convert.ToInt32(90) * Convert.ToInt32(100));
-            //int kos = (p1 / 90)*100;
-            int ols = Convert.ToInt32((p1 / 90) * 100);
-            P1 = Convert.ToInt32((p1 / 90) * 100);
-            P2 = Convert.ToInt32((p2 / 90) * 100);
-            P3 = Convert.ToInt32((p3 / 90) * 100);
-            P4 = Convert.ToInt32((p4 / 90) * 100);
-            P5 = Convert.ToInt32((p5 / 90) * 100);
-            P6 = Convert.ToInt32((p6 / 90) * 100);
-            P7 = Convert.ToInt32((p7 / 90) * 100);
-            P8 = Convert.ToInt32((p8 / 90) * 100);
-            P9 = Convert.ToInt32((p9 / 90) * 100);
-            P10 = Convert.ToInt32((p10 / 90) * 100);
-
-
+            return Page();
             
         }
 

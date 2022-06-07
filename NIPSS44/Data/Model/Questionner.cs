@@ -14,7 +14,10 @@ namespace NIPSS44.Data.Model
         public string Instruction { get; set; }
         public string ShortLink { get; set; }
         public string LongLink { get; set; }
+        public string PreviewImage { get; set; }
 
+        public long? ProfileId { get; set; }
+        public Profile Profile { get; set; }
         public ICollection<Question> Questions { get; set; }
     }
 }

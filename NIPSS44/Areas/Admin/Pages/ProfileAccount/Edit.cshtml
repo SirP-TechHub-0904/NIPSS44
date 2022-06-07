@@ -27,6 +27,7 @@
             <input type="hidden" asp-for="Profile.AboutProfile" />
             <input type="hidden" asp-for="Profile.IsParticipant" />
             <input type="hidden" asp-for="Profile.ProfilePhoto" />
+            <input type="hidden" asp-for="Profile.DateRegistered" />
 
             <div class="form-group">
                 <label asp-for="Profile.UserId" class="control-label"></label>
@@ -49,8 +50,9 @@
                 <input asp-for="Profile.OfficeAddress" class="form-control" />
                 <span asp-validation-for="Profile.OfficeAddress" class="text-danger"></span>
             </div>
-            @if(Model.Profile.StudyGroupMemeber !=null){
-            <h4>Study Group: @Model.Profile.StudyGroupMemeber.StudyGroup.Title</h4>
+            @if (Model.Profile.StudyGroupMemeber != null)
+            {
+                <h4>Study Group: @Model.Profile.StudyGroupMemeber.StudyGroup.Title</h4>
             }
             <div class="form-group">
                 <label class="control-label"></label>

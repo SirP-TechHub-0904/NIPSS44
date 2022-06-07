@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -68,6 +69,14 @@ namespace NIPSS44.Areas.Participant.Pages.ProjectPage
             xD3 = Convert.ToDecimal((d3 / Convert.ToDecimal(90)) * Convert.ToDecimal(100));
             xD4 = Convert.ToDecimal((d4 / Convert.ToDecimal(90)) * Convert.ToDecimal(100));
 
+            var callbackUrl = Url.Page(
+                         "/ProjectPage/ResultDue",
+                         pageHandler: null,
+                         values: new { area = "Participant" },
+                         protocol: Request.Scheme);
+
+            string mi = $"{HtmlEncoder.Default.Encode(callbackUrl)}";
+            TempData["link"] = mi;
             return Page();
         }
 

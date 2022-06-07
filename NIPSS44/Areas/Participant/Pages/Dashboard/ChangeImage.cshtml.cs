@@ -90,7 +90,7 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
                             filePathThumbnail = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                             imgCount++;
                             var now = DateTime.Now;
-                            string nameproduct = "News-";
+                            string nameproduct = "ProfileImage-";
                             var uniqueFileName = $"{now.Millisecond}{now.Minute}{now.Second}{now.Day}-".Trim() + nameproduct;
 
                             var fileExtension = Path.GetExtension(filePath);
@@ -98,7 +98,7 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
                             newFileName = uniqueFileName + fileExtension;
 
                             // if you wish to save file path to db use this filepath variable + newFileName
-                            var fileDbPathName = $"/News/".Trim();
+                            var fileDbPathName = $"/ProfileImage/".Trim();
 
                             filePath = $"{_hostingEnv.WebRootPath}{fileDbPathName}".Trim();
 
@@ -107,6 +107,13 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
 
                             var fileName = "";
                             fileName = filePath + $"{newFileName}".Trim();
+
+                            var oldfilePath = $"{_hostingEnv.WebRootPath}".Trim();
+                            string fullPath = filePath + pro.AboutProfile;
+                            if (System.IO.File.Exists(fullPath))
+                            {
+                                System.IO.File.Delete(fullPath);
+                            }
 
                             using (FileStream fsa = System.IO.File.Create(fileName))
                             {
@@ -138,7 +145,7 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
 
                 await _context.SaveChangesAsync();
                 TempData["alert"] = "Profile Updated Successfull";
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Profile");
             }
             catch (Exception c)
             {

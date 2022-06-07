@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Message.Mail)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Message.Mail)
+            @Html.Raw(Model.Message.Mail)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Message.Title)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,7 @@ using NIPSS44.Data.Model;
 
 namespace NIPSS44.Areas.Participant.Pages.ProjectPage
 {
-    [Authorize]
+    //[Authorize]
         public class ResultContributionModel : PageModel
     {
         private readonly NIPSS44.Data.NIPSSDbContext _context;
@@ -67,7 +68,16 @@ namespace NIPSS44.Areas.Participant.Pages.ProjectPage
             xC2 = Convert.ToDecimal((c2 / Convert.ToDecimal(90)) * Convert.ToDecimal(100));
             xC3 = Convert.ToDecimal((c3 / Convert.ToDecimal(90)) * Convert.ToDecimal(100));
             xC4 = Convert.ToDecimal((c4 / Convert.ToDecimal(90)) * Convert.ToDecimal(100));
-           
+
+            var callbackUrl = Url.Page(
+                         "/ProjectPage/ResultContribution",
+                         pageHandler: null,
+                         values: new { area = "Participant" },
+                         protocol: Request.Scheme);
+
+            string mi = $"{HtmlEncoder.Default.Encode(callbackUrl)}";
+            TempData["link"] = mi;
+
             return Page();
         }
        

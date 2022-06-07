@@ -66,7 +66,7 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
             var result = await _userManager.CreateAsync(user, Profile.PXI);
             if (result.Succeeded)
             {
-                if(Profile.AccountRole == "DirectingStaff")
+                if (Profile.AccountRole == "DirectingStaff")
                 {
                     await _userManager.AddToRoleAsync(user, "Staff");
                 }
@@ -76,6 +76,16 @@ namespace NIPSS44.Areas.Admin.Pages.ProfileAccount
                 }
                 await _userManager.AddToRoleAsync(user, Profile.AccountRole);
                 Profile.DateRegistered = DateTime.UtcNow.AddHours(1);
+
+                var dx = Profile.DateRegistered.ToString("ddMMMdddmmtt");
+                Random num = new Random();
+
+                // Create new string from the reordered char array
+                string rand = new string(dx.ToCharArray().
+                                OrderBy(s => (num.Next(2) % 2) == 0).ToArray());
+                var chx = rand;
+
+                Profile.ProfileHandler = chx;
                 Profile.UserId = user.Id;
                 _context.Profiles.Add(Profile);
                 await _context.SaveChangesAsync();

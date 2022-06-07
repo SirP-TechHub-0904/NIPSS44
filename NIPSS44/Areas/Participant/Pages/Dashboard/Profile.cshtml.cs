@@ -56,7 +56,7 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-            Profile = await _context.Profiles.FirstOrDefaultAsync(x => x.UserId == user.Id);
+            Profile = await _context.Profiles.Include(x=>x.MyGallery).FirstOrDefaultAsync(x => x.UserId == user.Id);
             StudyGroup = await _context.StudyGroupMemebers.Include(x=>x.StudyGroup).FirstOrDefaultAsync(x => x.ProfileId == Profile.Id);
             if (StudyGroup != null)
             {
@@ -108,6 +108,7 @@ namespace NIPSS44.Areas.Participant.Pages.Dashboard
                 pro.PsNumber = Profile.PsNumber;
                 pro.Sponsor = Profile.Sponsor;
                 pro.Gender = Profile.Gender;
+                pro.OfficeAddress = Profile.OfficeAddress;
                 pro.ProfileUpdateLevel = ProfileUpdateLevel.ONE;
                 pro.ProfileUpdateFirstTime = true;
                 _context.Attach(pro).State = EntityState.Modified;

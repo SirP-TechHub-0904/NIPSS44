@@ -45,6 +45,9 @@ namespace NIPSS44.Data.Model
         public bool IsParticipant { get; set; }
         public string Roles { get; set; }
 
+        public string ProfileHandler { get; set; }
+
+        public ICollection<Gallery> MyGallery { get; set; }
         public virtual StudyGroupMemeber StudyGroupMemeber { get; set; }
 
         public long? AlumniId { get; set; }

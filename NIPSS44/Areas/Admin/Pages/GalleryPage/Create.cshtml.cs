@@ -30,9 +30,15 @@ namespace NIPSS44.Areas.Admin.Pages.GalleryPage
             _hostingEnv = hostingEnv;
         }
 
+        public List<String> NameSuggestions => new List<string> { };
+        public List<String> StateSuggestions => new List<string> { "VIC", "NSW", "QLD", "NT", "WA", "SA", "TAS", "ACT" };
         public IActionResult OnGet()
         {
-           
+            ViewData["ProfileId"] = new SelectList(_context.Profiles, "Id", "FullName");
+            List<Profile> persons = new List<Profile>();
+
+            string listOfPersons = string.Join(",", persons.Select(p => p.FullName));
+
             return Page();
         }
 
@@ -45,6 +51,8 @@ namespace NIPSS44.Areas.Admin.Pages.GalleryPage
         {
             if (!ModelState.IsValid)
             {
+                ViewData["ProfileId"] = new SelectList(_context.Profiles, "Id", "FullName");
+
                 return Page();
             }
             int imgCount = 0;

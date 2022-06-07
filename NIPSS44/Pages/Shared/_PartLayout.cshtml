@@ -11,9 +11,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:updated_time" content="@DateTime.UtcNow.AddHours(1)" />
     <!-- Tell the browser to be responsive to screen width -->
-    @if (ViewData["disablex"] != "disable")
+    @*ViewData["disablex"] != "disable" ||*@
+    @if (ViewData["Title"] == "Responsive")
     {
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    }
+    else
+    {
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     }
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="~/dashboard/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -85,6 +90,19 @@
 
         gtag('config', 'G-X0CM3VESSW');
     </script>
+    <style>
+        .skin-blue .sidebar-menu > li > a {
+            border-left: 3px solid transparent;
+            font-weight: 900;
+            font-size: 18px;
+            border-bottom: 1px solid #b8c7ce1c;
+        }
+
+        .sidebar-menu > li > a {
+            padding: 7px 5px 7px 15px;
+            display: block;
+        }
+    </style>
 
 
 
@@ -241,9 +259,10 @@
                     <li><a asp-page="/Dashboard/Planner" asp-area="Participant"><i class="fa fa-globe"></i> <span>Dialy Planner</span></a></li>
                     <li><a asp-page="/Dashboard/Diary" asp-area="Participant"><i class="fa fa-envelope"></i> <span>Diary</span></a></li>
                     <li><a asp-page="/Dashboard/Init" asp-area="Participant"><i class="fa fa-bookmark"></i> <span>Rapid Test</span></a></li>
+                    <li><a asp-page="/Dashboard/MyGallery" asp-area="Participant"><i class="fa fa-photo"></i> <span>My Gallery</span></a></li>
+                    <li><a asp-page="/Forms/Index" asp-area="Participant"><i class="fa fa-question-circle"></i> <span>Project Questionner</span></a></li>
 
                     <li><a asp-page="/Dashboard/ParticipantList" asp-area="Participant"><i class="fa fa-bookmark"></i> <span>Participants</span></a></li>
-
                     <li><a asp-page="/TourPage/Index" asp-area="Participant"><i class="fa fa-globe"></i> <span>Tour</span></a></li>
                     <li><a asp-page="/Dashboard/Library" asp-area="Participant"><i class="fa fa-book"></i> <span>Library</span></a></li>
                     <li><a asp-page="/Dashboard/Sectv" asp-area="Participant"><i class="fa fa-camera"></i> <span>SEC44 TV</span></a></li>
@@ -272,14 +291,7 @@
                         <span class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back</span>
                     </a>
                 </h1>
-                <ol class="breadcrumb">
-                    <li>
 
-
-
-                    </li>
-
-                </ol>
             </section>
 
             <!-- Main content -->

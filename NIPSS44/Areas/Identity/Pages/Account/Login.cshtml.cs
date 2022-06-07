@@ -178,9 +178,15 @@ namespace NIPSS44.Areas.Identity.Pages.Account
                         }
 
                     }
-
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    }
                 }
-
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                }
             }
 
             // If we got this far, something failed, redisplay form
