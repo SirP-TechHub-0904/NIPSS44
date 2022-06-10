@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NIPSS44.Data;
 
 namespace NIPSS44.Data.Migrations
 {
     [DbContext(typeof(NIPSSDbContext))]
-    partial class NIPSSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220608090754_9302mald")]
+    partial class _9302mald
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -912,33 +914,6 @@ namespace NIPSS44.Data.Migrations
                     b.Property<string>("LongNote")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LongNoteMaximumLength")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LongNoteMinimumLength")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MultipleOption1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MultipleOption2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MultipleOption3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MultipleOption4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MultipleOption5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MultipleOption6")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MultipleOption7")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("No")
                         .HasColumnType("nvarchar(max)");
 
@@ -965,12 +940,6 @@ namespace NIPSS44.Data.Migrations
 
                     b.Property<string>("ShortNote")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ShortNoteMaximumLength")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ShortNoteMinimumLength")
-                        .HasColumnType("int");
 
                     b.Property<string>("Yes")
                         .HasColumnType("nvarchar(max)");
@@ -1123,9 +1092,6 @@ namespace NIPSS44.Data.Migrations
                     b.Property<long>("QuestionnerId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Required")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("SortOrder")
                         .HasColumnType("int");
 
@@ -1171,32 +1137,17 @@ namespace NIPSS44.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("AddTimeFrame")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("CloseTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Closed")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Email")
-                        .HasColumnType("int");
-
                     b.Property<string>("Instruction")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LongLink")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
 
                     b.Property<string>("PreviewImage")
                         .HasColumnType("nvarchar(max)");
@@ -1207,20 +1158,8 @@ namespace NIPSS44.Data.Migrations
                     b.Property<string>("Response")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("SendRespondantEmailAfterAttempt")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("SendResponse")
-                        .HasColumnType("bit");
-
                     b.Property<string>("ShortLink")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("ShowReSubmitBotton")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");

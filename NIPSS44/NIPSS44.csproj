@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="web.configl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="web.configl" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\.bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\dist\css\bootstrap-theme.css" />

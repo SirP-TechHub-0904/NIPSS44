@@ -57,7 +57,40 @@
 
                         </div>
                     }
-                    if (i.Options.OptionType == Data.Model.OptionType.Option)
+                    if (i.Options.OptionType == Data.Model.OptionType.FourOption)
+                    {
+                        <!-- checkbox -->
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios1_@i.Id" id="optionsRadios1" value="option1" checked>
+                                    @i.Options.OptionList1
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios1_@i.Id" id="optionsRadios2" value="option2">
+                                    @i.Options.OptionList2
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios1_@i.Id" id="optionsRadios2" value="option2">
+                                    @i.Options.OptionList3
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios1_@i.Id" id="optionsRadios2" value="option2">
+                                    @i.Options.OptionList4
+                                </label>
+                            </div>
+                            
+
+                        </div>
+                                            }
+
+                    if (i.Options.OptionType == Data.Model.OptionType.FiveOption)
                     {
                         <!-- checkbox -->
                         <div class="form-group">
@@ -98,7 +131,7 @@
                 }
             }
 
-            
+
         </form>
     </div>
     <!-- /.box-body -->

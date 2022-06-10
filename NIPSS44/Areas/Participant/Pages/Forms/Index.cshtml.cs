@@ -30,8 +30,7 @@ namespace NIPSS44.Areas.Participant.Pages.Forms
             var user = await _userManager.GetUserAsync(User);
             var profile = await _context.Profiles.FirstOrDefaultAsync(x => x.UserId == user.Id);
             ProfileId = profile.Id;
-            QuestionnerList = await _context.Questionners.Where(x=>x.ProfileId == profile.Id).ToListAsync();
-
+            QuestionnerList = await _context.Questionners.Where(x => x.ProfileId == profile.Id).OrderByDescending(x => x.Date).ToListAsync();
         }
         [BindProperty]
         public Questionner Questionner { get; set; }
@@ -51,10 +50,35 @@ namespace NIPSS44.Areas.Participant.Pages.Forms
             string code2 = Guid.NewGuid().ToString();
             Questionner.LongLink = code + CreateD() + code1 + code2;
             Questionner.ProfileId = ProfileId;
-
-
+            Questionner.Date = DateTime.UtcNow.AddHours(1);
+            Questionner.Title = DateTime.UtcNow.AddHours(1).ToString("dd MMM") + " QUESTIONNER";
+            Questionner.Description = "These a Questionner in your area of study";
+            Questionner.Response = "<i>THANK YOU.</i> We have received your feedback.";
+            Questionner.Instruction = "Attempt all question to the best of your knowledge";
+            Questionner.Email = EmailPhoneStatus.No;
+            Questionner.PhoneNumber = EmailPhoneStatus.No;
             _context.Questionners.Add(Questionner);
             await _context.SaveChangesAsync();
+
+            Question q = new Question();
+            q.QuestionnerId = Questionner.Id;
+            q.Title = "What type of Questionner do you want to create";
+            q.Number = 1;
+            q.SortOrder = 1;
+            _context.Questions.Add(q);
+            await _context.SaveChangesAsync();
+
+            Option o = new Option();
+            o.QuestionId = q.Id;
+            o.OptionType = OptionType.FourOption;
+            o.OptionList1 = "Interview";
+            o.OptionList2 = "Examination";
+            o.OptionList3 = "Marketing";
+            o.OptionList4 = "Sign Up";
+
+            _context.Options.Add(o);
+            await _context.SaveChangesAsync();
+
 
             return RedirectToPage("./FormMaker", new { o = Questionner.ShortLink, q = Questionner.LongLink });
         }
@@ -121,6 +145,11 @@ namespace NIPSS44.Areas.Participant.Pages.Forms
             }
             return new string(chars);
         }
+
+
+
+      
+
 
     }
 }

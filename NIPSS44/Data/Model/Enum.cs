@@ -17,6 +17,16 @@ namespace NIPSS44.Data.Model
         [Description("Dues")]
         Dues = 4,
     }
+
+    public enum EmailPhoneStatus
+    {
+        [Description("No")]
+        No = 0,
+        [Description("Required")]
+        Required = 2,
+        [Description("Optional")]
+        Optional = 3,
+    }
     public enum EventType
     {
 
@@ -39,8 +49,13 @@ namespace NIPSS44.Data.Model
         LongNote = 3,
         [Description("YesNo")]
         YesNo = 4,
-        [Description("Option")]
-        Option = 5,
+        [Description("FourOption")]
+        FourOption = 5,
+        [Description("FiveOption")]
+        FiveOption = 6,
+
+        [Description("MultipleOption")]
+        MultipleOption = 7,
 
     }
     public enum PostFileType

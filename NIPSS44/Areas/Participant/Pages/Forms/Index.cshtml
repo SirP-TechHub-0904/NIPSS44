@@ -65,8 +65,8 @@
                         </h6>
                     </form>
 
-                    <form style="display:inline;">
-
+                    <form style="display:inline;"  method="post" asp-page-handler="ContactForm">
+                        <input type="hidden" asp-for="ProfileId" />
                         <button type="submit" class="btn btn-default" style="margin-left:4px;height:120px;width:120px;text-align:center;">
                             <img src="~/img/contactform.jpeg" style="height:100px;" />
 
@@ -75,7 +75,8 @@
                             Contact Form
                         </h6>
                     </form>
-                    <form style="display:inline;">
+                    <form style="display:inline;" method="post" asp-page-handler="RSVP">
+                        <input type="hidden" asp-for="ProfileId" />
 
                         <button type="submit" class="btn btn-default" style="margin-left:4px;height:120px;width:120px;text-align:center;">
                             <img src="~/img/rsvp.jpeg" style="height:100px;" />
@@ -86,7 +87,8 @@
                         </h6>
                     </form>
 
-                    <form style="display:inline;">
+                    <form style="display:inline;" method="post" asp-page-handler="PartyInvite">
+                        <input type="hidden" asp-for="ProfileId" />
 
                         <button type="submit" class="btn btn-default" style="margin-left:4px;height:120px;width:120px;text-align:center;">
                             <img src="~/img/partyinvite.jpeg" style="height:100px;" />
@@ -97,7 +99,8 @@
                         </h6>
                     </form>
 
-                    <form style="display:inline;">
+                    <form style="display:inline;" method="post" asp-page-handler="Event">
+                        <input type="hidden" asp-for="ProfileId" />
 
                         <button type="submit" class="btn btn-default" style="margin-left:4px;height:120px;width:120px;text-align:center;">
                             <img src="~/img/events.jpeg" style="height:100px;" />
@@ -113,34 +116,84 @@
             </div>
 
             <div class="box-body">
-                <div class="btn-group" style="text-align: center; margin: 10px auto !important; display: flex; flex-direction: row; justify-content: center;">
 
-                    @if (Model.QuestionnerList.Count() > 0)
+                @if (Model.QuestionnerList.Count() > 0)
+                {
+
+                <div class="container">
+                    @if (TempData["error"] != null)
                     {
-
-                        foreach (var x in Model.QuestionnerList)
-                        {
-                            <form style="display:inline;">
-
-                                <button type="submit" class="btn btn-default" style="margin-left:4px;height:120px;width:120px;text-align:center;">
-                                    <img src="~/img/plus.jpeg" style="height:100px;" />
-
-
-                                </button>
-                                <h6 style="text-align:center;">
-                                    @x.Title
-                                </h6>
-                            </form>
-                        }
-
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Success!</strong> @TempData["Updated"]
+                        </div>
                     }
-                    else
-                    {
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
 
-                        <h4>You have no questionner record...</h4>
-                    }
+                                    <th>S/N</th>
+                                    <th>
+                                        Title
+                                    </th>
+                                    <th>
+                                        Closed
+                                    </th>
+                                    <th>
+                                        Response
+                                    </th>
 
+                                </tr>
+                            </thead>
+                            @{
+                                int sno = 0;
+                            }
+
+                            <tbody>
+                                @foreach (var x in Model.QuestionnerList)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @{ sno++; }
+                                            @sno
+                                        </td>
+                                        <td>
+                                            <a asp-page="./FormMaker" asp-route-o="@x.ShortLink" asp-route-q="@x.LongLink">
+                                                @Html.DisplayFor(modelItem => x.Title)
+                                            </a>
+                                        </td>
+                                        <td>
+                                            @if (x.Closed == true)
+                                            {
+                                                <span>True</span>
+                                            }
+                                            else
+                                            {
+                                                <span>False</span>
+                                            }
+                                        </td>
+                                        <td>
+
+                                            0
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                }
+
+                else
+                {
+
+                <h4>You have no questionner record...</h4>
+                }
+
             </div>
         </div>
 

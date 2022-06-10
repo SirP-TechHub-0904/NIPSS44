@@ -15,9 +15,23 @@ namespace NIPSS44.Data.Model
         public string ShortLink { get; set; }
         public string LongLink { get; set; }
         public string PreviewImage { get; set; }
+        public DateTime Date { get; set; }
 
         public long? ProfileId { get; set; }
         public Profile Profile { get; set; }
         public ICollection<Question> Questions { get; set; }
+
+        public EmailPhoneStatus Email { get; set; }
+        public EmailPhoneStatus PhoneNumber { get; set; }
+
+        public bool SendRespondantEmailAfterAttempt { get; set; }
+        public bool SendResponse { get; set; }
+        public bool AddTimeFrame { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime CloseTime { get; set; }
+        public bool Closed { get; set; }
+
+        public bool ShowReSubmitBotton { get; set; }
+
     }
 }
