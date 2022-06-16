@@ -30,6 +30,9 @@ namespace NIPSS44.Data
         public DbSet<TourSubCategory> TourSubCategories { get; set; }
         public DbSet<TourPost> TourPosts { get; set; }
         public DbSet<TourPostType> TourPostTypes { get; set; }
+        public DbSet<ReportAbuse> ReportAbuses { get; set; }
+        public DbSet<QuestionResponse> QuestionResponses { get; set; }
+        public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
 
         public DbSet<Questionner> Questionners { get; set; }
         public DbSet<Question> Questions { get; set; }

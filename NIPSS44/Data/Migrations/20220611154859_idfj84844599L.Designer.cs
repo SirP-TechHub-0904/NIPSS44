@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NIPSS44.Data;
 
 namespace NIPSS44.Data.Migrations
 {
     [DbContext(typeof(NIPSSDbContext))]
-    partial class NIPSSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220611154859_idfj84844599L")]
+    partial class idfj84844599L
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

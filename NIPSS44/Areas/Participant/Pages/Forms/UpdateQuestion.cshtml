@@ -138,47 +138,17 @@
                                     else if (Model.Option.OptionType == NIPSS44.Data.Model.OptionType.LongNote)
                                     {
                                         <div class="form-group">
-
                                             <div class="">
-                                                <textarea class="form-control" id="inputEmail3" placeholder="Minimum of @Model.Option.LongNoteMinimumLength Words and Maximum of @Model.Option.LongNoteMaximumLength words" maxlength="@Model.Option.LongNoteMaximumLength"></textarea>
+                                                <textarea class="form-control" id="inputEmail3" placeholder="Your Answer" maxlength="@Model.Option.LongNoteMaximumLength"></textarea>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="control-label">Long Answer Minimum Word</label>
-
-                                            <div class="">
-                                                <input type="number" class="form-control" id="inputEmail3" asp-for="Option.LongNoteMinimumLength" placeholder="Minimum Word">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="control-label">Long Answer Maximum Word</label>
-
-                                            <div class="">
-                                                <input type="number" class="form-control" id="inputEmail3" asp-for="Option.LongNoteMaximumLength" placeholder="Maximum Word">
-                                            </div>
-                                        </div>
                                     }
                                     else if (Model.Option.OptionType == NIPSS44.Data.Model.OptionType.ShortNote)
                                     {
                                         <div class="form-group">
-
                                             <div class="">
-                                                <textarea class="form-control" id="inputEmail3" placeholder="Minimum of @Model.Option.ShortNoteMinimumLength Words and Maximum of @Model.Option.ShortNoteMaximumLength words" maxlength="@Model.Option.LongNoteMaximumLength"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="control-label">Short Answer Minimum Word</label>
-
-                                            <div class="">
-                                                <input type="number" class="form-control" id="inputEmail3" asp-for="Option.ShortNoteMinimumLength" placeholder="Minimum Word">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="control-label">Short Answer Maximum Word</label>
-
-                                            <div class="">
-                                                <input type="number" class="form-control" id="inputEmail3" asp-for="Option.ShortNoteMaximumLength" placeholder="Maximum Word">
+                                                <input class="form-control" id="inputEmail3" placeholder="Your Answer" />
                                             </div>
                                         </div>
                                     }
@@ -346,35 +316,23 @@
                                         </div>
                                         <div id="LongNoteOption">
                                             <div class="form-group">
-                                                <label for="inputEmail3" class="control-label">Long Answer Minimum Word</label>
+                                                <label for="inputEmail3" class="control-label">Long Note</label>
 
                                                 <div class="">
-                                                    <input type="number" class="form-control" id="inputEmail3" asp-for="Option.LongNoteMinimumLength" placeholder="Minimum Word">
+                                                    <textarea type="text" class="form-control" id="inputEmail3"  placeholder="Your Answer"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="control-label">Long Answer Maximum Word</label>
-
-                                                <div class="">
-                                                    <input type="number" class="form-control" id="inputEmail3" asp-for="Option.LongNoteMaximumLength" placeholder="Maximum Word">
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <div id="ShortNoteOption">
                                             <div class="form-group">
-                                                <label for="inputEmail3" class="control-label">Short Answer Minimum Word</label>
+                                                <label for="inputEmail3" class="control-label">Short Note</label>
 
                                                 <div class="">
-                                                    <input type="number" class="form-control" id="inputEmail3" asp-for="Option.ShortNoteMinimumLength" placeholder="Minimum Word">
+                                                    <input type="text" class="form-control" placeholder="Your Answer">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="control-label">Short Answer Maximum Word</label>
-
-                                                <div class="">
-                                                    <input type="number" class="form-control" id="inputEmail3" asp-for="Option.ShortNoteMaximumLength" placeholder="Maximum Word">
-                                                </div>
-                                            </div>
+                                           
                                         </div>
                                         <div id="FiveOption">
                                             <div class="form-group">
@@ -516,7 +474,7 @@
 
 
     </div>
-
+    </div>
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 

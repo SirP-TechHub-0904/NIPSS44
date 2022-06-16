@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="web.configl" />
+    <None Remove="web.configc" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="web.configl" />
+    <Content Include="web.configc" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\.bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\bower.json" />
     <Content Include="wwwroot\dashboard\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -2678,6 +2678,9 @@
     </Compile>
     <Compile Update="Areas\Participant\Pages\Dashboard\MyGallery - Copy.cshtml.cs">
       <DependentUpon>MyGallery.cshtml.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\ReportAbusePage - Copy.cshtml.cs">
+      <DependentUpon>ReportAbusePage.cshtml.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

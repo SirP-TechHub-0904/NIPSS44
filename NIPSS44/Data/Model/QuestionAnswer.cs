@@ -8,11 +8,12 @@ namespace NIPSS44.Data.Model
     public class QuestionAnswer
     {
         public long Id { get; set; }
-        public long AnswerId { get; set; }
-        public Answer Answer { get; set; }
-        public long QuestionId { get; set; }
-        public Question Question { get; set; }
+        public long? QuestionnerId { get; set; }
+        public Questionner Questionner { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public DateTime Date { get; set; }
 
-        public string AnswerContent { get; set; }
+        public ICollection<QuestionResponse> QuestionResponses { get; set; }
     }
 }

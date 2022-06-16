@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NIPSS44.Data;
 
 namespace NIPSS44.Data.Migrations
 {
     [DbContext(typeof(NIPSSDbContext))]
-    partial class NIPSSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220610183144_idfj84844599")]
+    partial class idfj84844599
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1146,53 +1148,22 @@ namespace NIPSS44.Data.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("AnswerId")
+                    b.Property<string>("AnswerContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("AnswerId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("QuestionnerId")
+                    b.Property<long>("QuestionId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnswerId");
 
-                    b.HasIndex("QuestionnerId");
-
-                    b.ToTable("QuestionAnswers");
-                });
-
-            modelBuilder.Entity("NIPSS44.Data.Model.QuestionResponse", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Answer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("QuestionAnswerId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("QuestionId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionAnswerId");
-
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("QuestionResponses");
+                    b.ToTable("QuestionAnswer");
                 });
 
             modelBuilder.Entity("NIPSS44.Data.Model.Questionner", b =>
@@ -1870,24 +1841,17 @@ namespace NIPSS44.Data.Migrations
 
             modelBuilder.Entity("NIPSS44.Data.Model.QuestionAnswer", b =>
                 {
-                    b.HasOne("NIPSS44.Data.Model.Answer", null)
+                    b.HasOne("NIPSS44.Data.Model.Answer", "Answer")
                         .WithMany("QuestionAnswers")
-                        .HasForeignKey("AnswerId");
-
-                    b.HasOne("NIPSS44.Data.Model.Questionner", "Questionner")
-                        .WithMany()
-                        .HasForeignKey("QuestionnerId");
-                });
-
-            modelBuilder.Entity("NIPSS44.Data.Model.QuestionResponse", b =>
-                {
-                    b.HasOne("NIPSS44.Data.Model.QuestionAnswer", null)
-                        .WithMany("QuestionResponses")
-                        .HasForeignKey("QuestionAnswerId");
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("NIPSS44.Data.Model.Question", "Question")
                         .WithMany()
-                        .HasForeignKey("QuestionId");
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NIPSS44.Data.Model.Questionner", b =>
